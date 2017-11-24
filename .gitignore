@@ -1,3 +1,7 @@
+# Application configuration
+config/environment.js
+config/dirPaths.js
+
 # Logs
 logs
 *.log
@@ -56,4 +60,3 @@ typings/
 
 # dotenv environment variables file
 .env
-
