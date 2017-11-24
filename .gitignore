@@ -2,6 +2,9 @@
 config/environment.js
 config/dirPaths.js
 
+# Distribution
+dist
+
 # Logs
 logs
 *.log
