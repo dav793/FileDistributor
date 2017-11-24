@@ -174,6 +174,8 @@ module.exports.getIconClass = (mime) => {
         return 'fa-file-video-o';
 
     case 'audio/midi':
+    case 'audio/mp3':
+    case 'audio/mpeg':
         return 'fa-file-audio-o';
 
     case 'image/gif':
