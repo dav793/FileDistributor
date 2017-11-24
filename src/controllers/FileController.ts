@@ -84,7 +84,7 @@ module.exports.getDirListPage = (dirs, callback) => {
 
     let linkList = `<ul>`;
     dirs.forEach(link => {
-        linkList += `<li><a href=download/` + link + `>` + link + `</a></li>`;
+        linkList += `<li><i class="fa fa-folder-open-o"></i> <a href=download/` + link + `>` + link + `</a></li>`;
     });
     linkList += `</ul>`;
 
@@ -112,6 +112,7 @@ module.exports.getDirListPage = (dirs, callback) => {
           –––––––––––––––––––––––––––––––––––––––––––––––––– -->
           <link rel="stylesheet" href="/css/normalize.css">
           <link rel="stylesheet" href="/css/skeleton.css">
+          <link rel="stylesheet" href="/node_modules/font-awesome/css/font-awesome.min.css">
 
           <!-- Favicon
           –––––––––––––––––––––––––––––––––––––––––––––––––– -->
