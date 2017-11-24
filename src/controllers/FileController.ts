@@ -50,7 +50,7 @@ module.exports.getFileListPage = (files, dir, callback) => {
           <link rel="stylesheet" href="/css/normalize.css">
           <link rel="stylesheet" href="/css/skeleton.css">
           <link rel="stylesheet" href="/css/file-icons.css">
-          <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+          <link rel="stylesheet" href="/node_modules/font-awesome/css/font-awesome.min.css">
 
           <!-- Favicon
           –––––––––––––––––––––––––––––––––––––––––––––––––– -->
