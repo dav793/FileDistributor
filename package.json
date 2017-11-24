@@ -1,5 +1,5 @@
 {
-  "name": "File Distributor",
+  "name": "FileDistributor",
   "version": "1.0.0",
   "description": "package.json copied from another project, many dependencies are unnecessary.",
   "main": "index.js",
