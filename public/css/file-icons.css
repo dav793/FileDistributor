@@ -1,0 +1,37 @@
+.icon-file-alt {
+    margin:0 2px;
+    display: inline;
+}
+.icon-file-alt:after {
+    content: "EXT";
+
+    padding: 0 2px;
+    background: #F00;
+    /* If you need to you can use this to "blind" off some of the background color. */
+    /* Usually needed to accommodate another font, you might need to adjust the font line as well. */
+    /* background: linear-gradient(#F00 0%,#F00 91%,transparent 92%); */
+    color: #FFF;
+
+    /* The size/line-height value pait might need to be tweaked to accommodate another font. */
+    font: normal 800 0.86em "Source Code Pro", sans-serif;
+
+.icon-file-alt.png:after {
+    background: #E0D;
+    content: "PNG";
+}
+
+.icon-file-alt.jpg:after, 
+.icon-file-alt.jpeg:after {
+    background: #0A0;
+    content: "JPG";
+}
+
+.icon-file-alt.gif:after {
+    background: #00F;
+    content: "GIF";
+}
+
+.icon-file-alt.gif:after {
+    background: #00F;
+    content: "GIF";
+}

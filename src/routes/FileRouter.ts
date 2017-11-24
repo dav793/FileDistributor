@@ -31,10 +31,22 @@ export class FileRouter {
 				let url = dirPaths[req.params.dirId];
 
 				if (fs.lstatSync(url).isDirectory()) {
-					fs.readdir(url, function(err, items) {
+					fs.readdir(url, function(err, filenames) {
 					    //res.json(items);
 
-					    fileController.getFileListPage(items, req.params.dirId, (err: any, html: string) => {
+					    let filetypes = filenames.map(name => fileController.getFileMIME(name));
+
+					    let files = filenames.map((name, i) => { 
+					    	return { 
+					    		name: name, 
+					    		mime: filetypes[i], 
+					    		url: url + '/' + name 
+					    	};
+					    });
+					    console.log('========== files in dir ==========');
+					    console.log(files);
+
+					    fileController.getFileListPage(filenames, req.params.dirId, (err: any, html: string) => {
 					    	if (err)
 			                    res.status(500).send(err);
 			                else

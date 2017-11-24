@@ -1,6 +1,7 @@
 import {Router, Request, Response, NextFunction} from 'express';
 
 const fs = require('fs');
+const mime = require('mime-types');
 
 module.exports.getIndexPage = (callback) => {
     fs.readFile('./public/index.html', 'utf8', function (err, data) {
@@ -15,7 +16,9 @@ module.exports.getFileListPage = (links, dir, callback) => {
 
     let linkList = `<ul>`;
     links.forEach(link => {
-        linkList += `<li><a href=` + dir + `/` + encodeURI(link) + `>` + link + `</a></li>`;
+        linkList +=  `<li>
+                        <i class="icon-file-alt png"></i><a href=` + dir + `/` + encodeURI(link) + `>` + link + `</a>
+                      </li>`;
     });
     linkList += `</ul>`;
 
@@ -43,6 +46,7 @@ module.exports.getFileListPage = (links, dir, callback) => {
           –––––––––––––––––––––––––––––––––––––––––––––––––– -->
           <link rel="stylesheet" href="/css/normalize.css">
           <link rel="stylesheet" href="/css/skeleton.css">
+          <link rel="stylesheet" href="/css/file-icons.css">
 
           <!-- Favicon
           –––––––––––––––––––––––––––––––––––––––––––––––––– -->
@@ -131,4 +135,9 @@ module.exports.getDirListPage = (dirs, callback) => {
 
     callback(null, html);
 
+};
+
+module.exports.getFileMIME = (url) => {
+    var type = mime.lookup(url) || 'application/octet-stream';
+    return type;
 };
