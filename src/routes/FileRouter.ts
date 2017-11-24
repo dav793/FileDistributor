@@ -32,7 +32,6 @@ export class FileRouter {
 
 				if (fs.lstatSync(url).isDirectory()) {
 					fs.readdir(url, function(err, filenames) {
-					    //res.json(items);
 
 					    let filetypes = filenames.map(name => fileController.getFileMIME(name));
 
@@ -46,7 +45,7 @@ export class FileRouter {
 					    console.log('========== files in dir ==========');
 					    console.log(files);
 
-					    fileController.getFileListPage(filenames, req.params.dirId, (err: any, html: string) => {
+					    fileController.getFileListPage(files, req.params.dirId, (err: any, html: string) => {
 					    	if (err)
 			                    res.status(500).send(err);
 			                else

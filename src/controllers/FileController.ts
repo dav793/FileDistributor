@@ -12,15 +12,18 @@ module.exports.getIndexPage = (callback) => {
     });
 };
 
-module.exports.getFileListPage = (links, dir, callback) => {
+module.exports.getFileListPage = (files, dir, callback) => {
 
-    let linkList = `<ul>`;
-    links.forEach(link => {
-        linkList +=  `<li>
-                        <i class="icon-file-alt png"></i><a href=` + dir + `/` + encodeURI(link) + `>` + link + `</a>
-                      </li>`;
+    let fileList = `<ul>`;
+    files.forEach(file => {
+
+      let iconClass = this.getIconClass(file.mime);
+      fileList +=  `<li>
+                      <i class="fa ` + iconClass + `"></i> <a href=` + dir + `/` + encodeURI(file.name) + `>` + file.name + `</a>
+                    </li>`;
+
     });
-    linkList += `</ul>`;
+    fileList += `</ul>`;
 
     let html = `
         <!DOCTYPE html>
@@ -47,6 +50,7 @@ module.exports.getFileListPage = (links, dir, callback) => {
           <link rel="stylesheet" href="/css/normalize.css">
           <link rel="stylesheet" href="/css/skeleton.css">
           <link rel="stylesheet" href="/css/file-icons.css">
+          <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
 
           <!-- Favicon
           –––––––––––––––––––––––––––––––––––––––––––––––––– -->
@@ -61,7 +65,7 @@ module.exports.getFileListPage = (links, dir, callback) => {
             <div class="row">
               <div class="one-half column" style="margin-top: 5%">
                 <h4>Choose a file in ` + dir + `:</h4>
-                ` + linkList + `
+                ` + fileList + `
               </div>
             </div>
           </div>
@@ -140,4 +144,57 @@ module.exports.getDirListPage = (dirs, callback) => {
 module.exports.getFileMIME = (url) => {
     var type = mime.lookup(url) || 'application/octet-stream';
     return type;
+};
+
+module.exports.getIconClass = (mime) => {
+  switch(mime) {
+
+    case 'application/pdf':
+        return 'fa-file-pdf-o';
+
+    case 'application/vnd.oasis.opendocument.spreadsheet':
+        return 'fa-file-excel-o';
+
+    case 'application/msword':
+    case 'application/vnd.oasis.opendocument.text':
+    case 'application/vnd.openxmlformats-officedocument.wordprocessingml.document':
+        return 'fa-file-word-o';
+
+    case 'text/plain':
+    case 'application/rtf':
+        return 'fa-file-text-o';
+
+    case 'vnd.ms-powerpoint':
+    case 'application/vnd.oasis.opendocument.presentation':
+        return 'fa-file-powerpoint-o';
+
+    case 'video/mpeg':
+    case 'video/ogg':
+        return 'fa-file-video-o';
+
+    case 'audio/midi':
+        return 'fa-file-audio-o';
+
+    case 'image/gif':
+    case 'image/x-icon':
+    case 'image/jpeg':
+    case 'image/jpg':
+    case 'image/png':
+    case 'image/bmp':
+        return 'fa-file-image-o';
+
+    case 'application/octet-stream':
+    case 'application/javascript':
+    case 'application/json':
+    case 'application/typescript':
+        return 'fa-file-code-o';
+
+    case 'application/zip':
+    case 'application/vnd.rar':
+        return 'fa-file-archive-o';
+
+    default: 
+        return 'fa-file-archive-o';
+
+  }
 };
