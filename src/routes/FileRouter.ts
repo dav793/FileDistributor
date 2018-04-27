@@ -20,8 +20,13 @@ export class FileRouter {
             fileController.getDirListPage(Object.keys(dirPaths), (err: any, file: any) => {
                 if (err) 
                     res.status(500).send(err);
-                else
+                else {
+
+                	console.log('========== available dirs ==========');
+                	console.log(Object.keys(dirPaths));
+
                     res.send(file);
+                }
             });
 		});
 

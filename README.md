@@ -3,11 +3,11 @@
 
 HTTP server to put local files up for download.
 
-Originally made to easily share files to other devices in my local network (i.e. to my phone).
+Made originally to share files to other devices in my local network.
 
 ## What it does
 
-Allows other devices in same network as the server running this program, to view the contents of certain directories and to download files from said directories, to which the server must first allow access.
+Allows other devices in the same network as the server running this program, to view the contents of certain directories and to download files from said directories, to which the server has allowed access beforehand.
 
 ## How to run
 
@@ -41,7 +41,7 @@ Allows other devices in same network as the server running this program, to view
 	};
 	```
 
-	Note that all files under the allowed directories will be available for download. Also note that multi-level directories are not yet supported.
+	Note that all files under the allowed directories will be available for download. Also multi-level directories are not yet supported, sorry!
 
 5.	Start the server application
 	```bash
